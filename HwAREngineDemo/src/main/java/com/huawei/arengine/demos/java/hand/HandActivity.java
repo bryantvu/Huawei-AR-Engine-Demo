@@ -61,17 +61,21 @@ public class HandActivity extends Activity {
 
     // Used for the display of recognition data.
     private TextView mTextView;
+    private static TextView gestureText;
 
     private String message = null;
 
     private boolean isRemindInstall = false;
+    public static Activity HandActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hand_activity_main);
         mTextView = findViewById(R.id.handTextView);
+        gestureText = findViewById(R.id.hand_gesture);
         mSurfaceView = findViewById(R.id.handSurfaceview);
+        HandActivity = getParent();
 
         mDisplayRotationManager = new DisplayRotationManager(this);
 
@@ -217,5 +221,9 @@ public class HandActivity extends Activity {
                     | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
+    }
+
+    public static void updateGestureText(String text){
+        gestureText.setText(text);
     }
 }

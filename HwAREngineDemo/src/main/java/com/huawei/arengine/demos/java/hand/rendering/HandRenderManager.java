@@ -17,20 +17,25 @@
 package com.huawei.arengine.demos.java.hand.rendering;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.huawei.arengine.demos.R;
 import com.huawei.arengine.demos.common.ArDemoRuntimeException;
 import com.huawei.arengine.demos.common.DisplayRotationManager;
 import com.huawei.arengine.demos.common.TextDisplay;
 import com.huawei.arengine.demos.common.TextureDisplay;
+import com.huawei.arengine.demos.java.hand.HandActivity;
 import com.huawei.hiar.ARCamera;
 import com.huawei.hiar.ARFrame;
 import com.huawei.hiar.ARHand;
 import com.huawei.hiar.ARSession;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -75,11 +80,7 @@ public class HandRenderManager implements GLSurfaceView.Renderer {
 
     private DisplayRotationManager mDisplayRotationManager;
 
-    /**
-     * The constructor that passes context and activity. The method will be called when {@link Activity#onCreate}.
-     *
-     * @param activity Activity
-     */
+
     public HandRenderManager(Activity activity) {
         mActivity = activity;
         HandRelatedDisplay handBoxDisplay = new HandBoxDisplay();
@@ -251,6 +252,31 @@ public class HandRenderManager implements GLSurfaceView.Renderer {
 
     private void addHandNormalStringBuffer(StringBuilder sb, ARHand hand) {
         sb.append("GestureType=").append(hand.getGestureType()).append(System.lineSeparator());
+
+        try{
+            String gestureString = "UNKNOWN";
+            switch(hand.getGestureType()){
+                case 0:
+                    gestureString = "FIST";
+                    break;
+                case 1:
+                    gestureString = "INDEX";
+                    break;
+                case 6:
+                    gestureString = "PHONE";
+                    break;
+                case 8:
+                    gestureString = "L SIGN";
+                    break;
+                default:
+                    Log.e(TAG, "UNKNOWN");
+                    break;
+            }
+            HandActivity.updateGestureText("Gesture >> " + gestureString);
+        }catch(Exception e){
+            Log.e(TAG, "Error updating gesture text >> "+ e.toString());
+        }
+
         sb.append("GestureCoordinateSystem=").append(hand.getGestureCoordinateSystem()).append(System.lineSeparator());
         float[] gestureOrientation = hand.getGestureOrientation();
         sb.append("gestureOrientation length:[").append(gestureOrientation.length).append("]")
