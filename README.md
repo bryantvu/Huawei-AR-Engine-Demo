@@ -1,3 +1,1 @@
-HMSCapability
-
-This project showcase HMS Capability.
+Huawei AR Engine Demo
