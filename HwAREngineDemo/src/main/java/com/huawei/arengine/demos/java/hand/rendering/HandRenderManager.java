@@ -253,29 +253,29 @@ public class HandRenderManager implements GLSurfaceView.Renderer {
     private void addHandNormalStringBuffer(StringBuilder sb, ARHand hand) {
         sb.append("GestureType=").append(hand.getGestureType()).append(System.lineSeparator());
 
-        try{
-            String gestureString = "UNKNOWN";
-            switch(hand.getGestureType()){
-                case 0:
-                    gestureString = "FIST";
-                    break;
-                case 1:
-                    gestureString = "INDEX";
-                    break;
-                case 6:
-                    gestureString = "PHONE";
-                    break;
-                case 8:
-                    gestureString = "L SIGN";
-                    break;
-                default:
-                    Log.e(TAG, "UNKNOWN");
-                    break;
-            }
-            HandActivity.updateGestureText("Gesture >> " + gestureString);
-        }catch(Exception e){
-            Log.e(TAG, "Error updating gesture text >> "+ e.toString());
-        }
+//        try{
+//            String gestureString = "UNKNOWN";
+//            switch(hand.getGestureType()){
+//                case 0:
+//                    gestureString = "FIST";
+//                    break;
+//                case 1:
+//                    gestureString = "INDEX";
+//                    break;
+//                case 6:
+//                    gestureString = "PHONE";
+//                    break;
+//                case 8:
+//                    gestureString = "L SIGN";
+//                    break;
+//                default:
+//                    Log.e(TAG, "UNKNOWN");
+//                    break;
+//            }
+//            HandActivity.updateGestureText("Gesture >> " + gestureString);
+//        }catch(Exception e){
+//            Log.e(TAG, "Error updating gesture text >> "+ e.toString());
+//        }
 
         sb.append("GestureCoordinateSystem=").append(hand.getGestureCoordinateSystem()).append(System.lineSeparator());
         float[] gestureOrientation = hand.getGestureOrientation();

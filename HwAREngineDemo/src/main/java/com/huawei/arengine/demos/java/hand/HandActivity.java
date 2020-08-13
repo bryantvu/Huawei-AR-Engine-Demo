@@ -61,7 +61,7 @@ public class HandActivity extends Activity {
 
     // Used for the display of recognition data.
     private TextView mTextView;
-    private static TextView gestureText;
+//    private static TextView gestureText;
 
     private String message = null;
 
@@ -73,7 +73,7 @@ public class HandActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hand_activity_main);
         mTextView = findViewById(R.id.handTextView);
-        gestureText = findViewById(R.id.hand_gesture);
+//        gestureText = findViewById(R.id.hand_gesture);
         mSurfaceView = findViewById(R.id.handSurfaceview);
         HandActivity = getParent();
 
@@ -223,7 +223,7 @@ public class HandActivity extends Activity {
         }
     }
 
-    public static void updateGestureText(String text){
-        gestureText.setText(text);
-    }
+//    public static void updateGestureText(String text){
+//        gestureText.setText(text);
+//    }
 }
